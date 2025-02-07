@@ -39,10 +39,28 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-  #     - name: Upload a Build Artifact
-  # uses: actions/upload-artifact@v4.6.0
-  # with:
-  #   # Artifact name
-  #   name: Build-Artifact
-  #   # A file, directory or wildcard pattern that describes what to upload
-  #   path: ${{github.workspace}}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.0
+        with:
+         # Artifact name
+          name: Build-Artifact
+         # A file, directory or wildcard pattern that describes what to upload
+          # path: /home/runner/work/Try_repo/Try_repo/Final_OUT
+          path: ${{github.workspace}}
+
+    Deploy:
+      runs-on: ubuntu-latest
+      environment:
+        name: Dev_pramod
+      # needs: test
+      steps:
+        -uses: actions/upload-artifact@v4.6.0
+        run: |
+          add another action in build
+       -name: Download a build Artifact
+        uses: actions/upload-artifact@v4.6.0
+        with: 
+          name: Build-Artifact
+          path: ${{github.workspace}}
+         
+        
